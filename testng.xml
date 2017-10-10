@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Regression Suite Name">
+ <!--    <listeners>
+        <listener class-name="framework.report.ExtentListener"/>
+    </listeners> -->
+    <test name="Regression Test Name">
+        <classes>
+            <class name="com.sam.org.test.Test2"/>
+        </classes>
+    </test>
+</suite>

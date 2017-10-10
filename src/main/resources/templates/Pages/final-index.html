@@ -1,0 +1,562 @@
+<html>
+<head>
+<title>
+Api Automation
+</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+<style>
+thead > tr > th {
+  text-align: center;
+}
+tbody {
+  text-align: center;
+}
+</style>
+</head>
+<body>
+ <div class="container" style="background-color:#BBDEFB;">
+ <!--  one  #BBDEFB -->
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">API automation</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li ><a href="#"><img src='../sampleApiWork-0.0.1-SNAPSHOT/Icons/home.gif' id='homeImg' height="60px" width="60px" title="Home" /></a></li>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+</ul>
+
+      <!-- Main component for a primary marketing message or call to action -->
+              <div class="btn-group pull-right" role="group">
+  <button type="button" id="add" class="btn btn-default"  data-toggle="modal" data-target="#addmodal" title="Add Test Class"><img src='../Icons/add.png' id='addImg' height="40px" width="40px"/></button>
+  <button type="button"  id="update"class="btn btn-default"  data-toggle="modal" data-target="#updatemodal" title="Update Test Class"><img src='../Icons/edit.png' id='updateImg' height="40px" width="40px"/></button>
+  <button type="button"  id="delete" class="btn btn-default" title="Delete Test Class" ><img src='../Icons/delete.png' id='deleteImg' height="40px" width="40px"/></button>
+  <button type="button"  id="upload" class="btn btn-default"  data-toggle="modal" data-target="#uploadmodal" title="Upload Files"><img src='../Icons/upload.png' id='uploadImg' height="40px" width="40px"/></button>
+  
+  <!-- <button type="button"  id="download" class="btn btn-default" title="Download File"><a href='../Excel/ApiAutomation.xlsx' download><img src='../Icons/download.png' id='downloadImg' height="40px" width="40px"/></a></button> -->
+  <!-- Download -->
+  <button type="button"  id="download" class="btn btn-default"  data-toggle="modal" data-target="#downloadmodal" title="Download Files"><img src='../Icons/download.png' id='uploadImg' height="40px" width="40px"/></button>
+  
+    <button type="button"  id="runImgBtn" class="btn btn-default"  data-toggle="modal" data-target="#runmodal" title="Run Automation"><img src='../Icons/run.gif' id='runImg' height="40px" width="40px"/></button>
+  <button type="button"  class="btn btn-default" title="View Report" id='report'><a href="/report" target="blank" id='reportLink'><img src='../Icons/report.png' id='reportImg' height="40px" width="40px"/></a></button>
+  <button type="button"  class="btn btn-default" title="Readme"><a href="/readme" target="blank" ><img src='../Icons/readme.png' id='readmeImg' height="40px" width="40px"/></a></button>
+  
+</div>
+
+   <div class="jumbotron"   >
+   <br>
+<table id="listoftests" class="table table-striped table-bordered" style="background-color:#84FFFF;"              data-search="true"
+           data-show-refresh="true"
+           data-show-toggle="true"
+           data-minimum-count-columns="3"
+           data-show-pagination-switch="false"
+           data-pagination="true"
+           data-page-list="[10,25, 50, 100, ALL]"
+           data-show-footer="false"
+           data-side-pagination="client"
+           data-url="/getMethodList">
+<tbody>
+
+</tbody>
+</table>
+
+</div>
+<div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="exampleModalLabel">Add Test Class</h3>
+     
+      </div>
+      <div class="modal-body">
+      <div class="row">
+      <div class="col-sm-8">
+      <br>
+      <label for="testmethodadd">Test Class</label>
+      <input type="text" class="form-control" id="testmethodadd" placeholder="PackageName.ClassName"/>
+      </div>       
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+      <br>
+      <label for="testmethoddesc">Test description</label>
+      <input type="text" class="form-control" id="testmethoddesc" placeholder="Test Description"/>
+      <br>
+      </div>       
+    </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="savetest"><span class="glyphicon glyphicon-ok"></span> Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Update File code -->
+<div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="exampleModalLabel">Update Test Class</h3>
+     
+      </div>
+      <div class="modal-body">
+      <div class="row">
+      <div class="col-sm-8">
+      <br>
+      <label for="testupdid">Test Class ID:</label>
+      <input type="text" class="form-control" id="testupdid" disabled/>
+      </div>       
+    </div>
+      <div class="row">
+      <div class="col-sm-8">
+      <br>
+      <label for="testupdmethod">Test Class</label>
+      <input type="text" class="form-control" id="testupdmethod" placeholder="PackageName.ClassName"/>
+      </div>       
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+      <br>
+      <label for="testupdmethoddesc">Test description</label>
+      <input type="text" class="form-control" id="testupdmethoddesc" placeholder="Test Description"/>
+      <br>
+      </div>       
+    </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="updatetest">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Update File code End -->
+
+<!-- Run code -->
+<div class="modal fade" id="runmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="exampleModalLabel">Run Test Method</h3>
+     
+      </div>
+      <div class="modal-body">
+      <div class="row">
+      <div class="col-sm-8">
+      <br>
+      <label for="testupdid">Browser:</label>
+      <select class="form-control" id="browser" name="Browser" style="width:225px;">
+         <option value="Chrome" selected='selected'>Chrome</option>
+         <option value="FireFox" >FireFox</option>
+         <option value="InternetExplorer" >InternetExplorer</option>
+      </select>
+      </div>       
+    </div>
+      <div class="row">
+      <div class="col-sm-8">
+      <br>
+      <label for="testupdmethod">Name</label>
+      <input type="text" class="form-control" id="runName" placeholder="Run report Name"/>
+      </div>       
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+      <br>
+      <label for="testupdmethoddesc">Description</label>
+      <input type="text" class="form-control" id="runDiscription" placeholder="Description"/>
+      <br>
+      </div>       
+    </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="runclose" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="run"><span class="glyphicon glyphicon-play"></span> Trigger</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Run End -->
+
+<!-- Download File code -->
+
+<div class="modal fade" id="downloadmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="exampleModalLabel">Download Files</h3>
+     
+      </div>
+      <div class="modal-body">
+      <div class="row">
+      <div class="col-sm-12">
+      <br>
+      <div class="col-sm-1"></div>
+      <button type="button"  id="excelDownload" class="col-sm-2 btn btn-default" title="Excel Download"><a href='../Excel/ApiAutomation.xlsx' download><img src='../Icons/excel.png' id='excelDownloadImg' height="60px" width="60px"></img></a></button>
+      <div class="col-sm-2"></div>
+     <button type="button"  id="jksDownload" class="col-sm-2 btn btn-default" title="JKS Download"><a href='../Jks/ApiCert.jks' download><img src='../Icons/jks.png' id='jksDownloadImg' height="60px" width="60px"></img></a></button>
+     <div class="col-sm-2"></div>
+     <button type="button"  id="reportsDownload" class="col-sm-2 btn btn-default" title="ReportsDownload"><img src='../Icons/reports.png' id='reportsDownloadImg' height="60px" width="60px"/></button>
+     <div class="col-sm-1"></div>
+      </div>       
+    </div>
+  </div>
+  <br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Download File End -->
+
+  <!-- Upload File code -->
+
+  <div class="modal fade" id="uploadmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="exampleModalLabel">Upload Files</h3><br><br>
+     <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+      <div class="modal-body">
+      <div class="row">
+     <label >EXCEL File:</label>
+         <input  type="file" name="files" class="filestyle"/><br/><br/>
+          <label >JKS File:</label>
+    <input   type="file" name="files" class="filestyle"/><br/><br/>
+    <div class="modal-footer">
+    <br>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input class="btn btn-primary" type="submit" value="Upload" id="uploadBtn"/></span>
+      </div>
+    <!-- <input class="modal-footer btn btn-primary" type="submit" value="Upload" id="uploadBtn"/> -->
+    </div>
+    </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <!-- Upload File code End-->
+
+</div>
+    </div> 
+
+</body>
+<script type="text/javascript">
+var testToRunOrDelete = [];
+function getHeight() {
+        return 600;
+}
+
+$('#listoftests').bootstrapTable({
+   height: getHeight(),
+   onCheckAll:function(rows){
+    $.each(rows,function(k,v){
+      testToRunOrDelete.push(v.testMethodId);
+      testToRunOrDelete = jQuery.unique( testToRunOrDelete );
+    }) ;
+    console.log(testToRunOrDelete);
+   },
+  onCheck:function(row,element){
+    testToRunOrDelete.push(row.testMethodId);
+    },
+   onUncheckAll:function(rows){
+     $.each($("input[name='btSelectItem']").parent().next(),function(k,v){
+       var id= $(v).text();
+       testToRunOrDelete=jQuery.grep(testToRunOrDelete,function(val){
+          return val!=id;
+        });
+         });
+    console.log(testToRunOrDelete);
+  },
+   onUncheck:function(row,element){
+     testToRunOrDelete=jQuery.grep(testToRunOrDelete,function(val){
+        return val!=row.testMethodId;
+      });
+     console.log(testToRunOrDelete);
+       },
+    onRefresh:function(params){
+      testToRunOrDelete=[];
+    },
+    columns: [
+    {
+        checkbox: true
+    },
+    {
+        field: 'testMethodId',
+        title: 'Test ID'
+    }, {
+        field: 'testMethodName',
+        title: 'Test Method Name'
+    }, {
+        field: 'testMethodDescription',
+        title: 'Description'
+    }],
+   
+url: "/getMethodList"
+});
+
+$("#run").click(function(){
+  /*$("#run").text("Running...");*/
+
+  var runEntity = {
+		  'parallel' : "false",
+		  'runName'	 : $("#runName").val(),
+			  'runDiscription' : $("#runDiscription").val(),
+				  'browser' : $("#browser").val(),
+				  'testIdToRun' : jQuery.unique(testToRunOrDelete)
+  };
+  console.log(runEntity);
+
+  console.log(">>>>>>>>"+testToRunOrDelete);
+  $("#reportLink").attr("href", "javascript: void(0);" ); 
+  $("#run").prop("disabled", true);
+  $("#runImgBtn").prop("disabled", true);
+  var srcImg = "../Icons/running.gif";
+      $("#runImg").prop('src',srcImg);
+      $("#runImgBtn").attr('title','Running Automation');
+      $("#runclose").click();
+      
+     
+$.ajax({
+    method: "POST",
+    url: "/runMethodList",
+    contentType:"application/json",
+    dataType:"json",
+    data: JSON.stringify(runEntity),
+    success:function( data ) {
+     // testToRunOrDelete=[];
+     var statusFlag;
+     var statusMessage;
+     if(data.statusCode == 0) {
+      statusFlag = 'success';
+      statusMessage = 'Completed';
+    }
+     else if(data.statusCode == 1){
+      statusFlag = 'error';
+      statusMessage = 'Exception';
+    }else if(data.statusCode == 2){
+    	 statusFlag = 'warning';
+         statusMessage = 'Warning';
+    }else{
+    	 statusFlag = 'info';
+         statusMessage = 'Info';
+    }
+     swal(
+  statusMessage,
+  data.status,
+  statusFlag
+)
+      var srcImg1 = "../Icons/run.gif";
+     $("#runImg").attr('src',srcImg1);
+     $("#runImgBtn").attr('title','Run Automation');
+     $("#run").prop("disabled", false);
+     $("#runImgBtn").prop("disabled",false);
+      $("#reportLink").attr("href", "/reports" ); 
+      
+    }
+  })
+});
+
+$("#add").click(function(){
+  $("#testmethodadd").val(''),
+  $("#testmethoddesc").val('')
+});
+
+$("#update").click(function(){
+  $("#testupdmethod").val(''),
+  $("#testupdmethoddesc").val('')
+});
+$("#savetest").click(function(){
+var postData= {
+  'testMethodName':$("#testmethodadd").val(),
+  'testMethodDescription':$("#testmethoddesc").val()
+}
+console.log("Adding tests:");
+console.log(postData);
+$.ajax({
+    method: "POST",
+    url: "/addTestMethod",
+    contentType:"application/json",
+    dataType:"json",
+    data: JSON.stringify(postData),
+      success:function( data ) {
+        $("button[title='Refresh']").click();
+        $("#addmodal div.modal-footer >  button:nth-of-type(1)").click();
+      var statusFlag;
+     var statusMessage;
+     if(data.statusCode == 0) {
+      statusFlag = 'success';
+      statusMessage = 'Completed';
+    }
+     else if(data.statusCode == 1){
+      statusFlag = 'error';
+      statusMessage = 'Exception';
+    }else{
+    	statusFlag = 'warning';
+    	statusMessage = 'Warning';
+    }
+     swal(
+  statusMessage,
+  data.status,
+  statusFlag
+)
+      }
+  })
+});
+
+$("#update").click(function(){
+var selectedTest= $("input[name='btSelectItem']:checked").parent().first();
+
+$("#testupdid").val($(selectedTest).next().text());
+$("#testupdmethod").val($(selectedTest).next().next().text());
+$("#testupdmethoddesc").val($(selectedTest).next().next().next().text());
+});
+
+
+$("#updatetest").click(function(){
+var updateData =  {
+    'testMethodId': $("#testupdid").val(),
+    'testMethodName': $("#testupdmethod").val(),
+    'testMethodDescription': $("#testupdmethoddesc").val()
+  }
+  console.log(updateData);
+$.ajax({
+    method: "PUT",
+    url: "/updateTestMethod",
+    contentType:"application/json",
+    dataType:"json",
+    data: JSON.stringify(updateData),
+      success:function( data ) {
+      var statusFlag;
+     var statusMessage;
+     if(data.statusCode == 0) {
+      statusFlag = 'success';
+      statusMessage = 'Completed';
+    }
+     else if(data.statusCode == 2){
+      statusFlag = 'warning';
+      statusMessage = 'Warning';
+    }else{
+    	 statusFlag = 'info';
+         statusMessage = 'Info';
+    }
+     swal(
+  statusMessage,
+  data.status,
+  statusFlag
+)
+      $("button[title='Refresh']").click();
+      }
+  })
+});
+
+$("#delete").click(function(){
+$.ajax({
+    method: "DELETE",
+    url: "/removeTestMethod",
+    contentType:"application/json",
+    dataType:"json",
+    data: JSON.stringify(jQuery.unique(testToRunOrDelete)),
+      success:function( data ) {
+      var statusFlag;
+     var statusMessage;
+     if(data.statusCode == 0) {
+      statusFlag = 'success';
+      statusMessage = 'Completed';
+    }
+     else {
+      statusFlag = 'warning';
+      statusMessage = 'Warning';
+    }
+     swal(
+  statusMessage,
+  data.status,
+  statusFlag
+)
+      //testToRunOrDelete=[];
+      $("button[title='Refresh']").click();
+      }
+  })
+});
+<!-- Upload File Ajax -->
+$("#uploadBtn").click(function (event) {
+  event.preventDefault();
+var form =  $('#fileUploadForm')[0];
+  var data = new FormData(form);
+    $("#uploadBtn").prop("disabled", true);
+    console.log(data);
+$.ajax({
+
+    method: "POST",
+        enctype: 'multipart/form-data',
+        url: "/upload",
+        data: data,
+        processData: false, //prevent jQuery from automatically transforming the data into a query string
+        contentType: false,
+        cache: false,
+         success:function( data ) {
+      var statusFlag;
+     var statusMessage;
+     if(data.statusCode == 0) {
+      statusFlag = 'success';
+      statusMessage = 'Completed';
+    }
+     else{
+      statusFlag = 'error';
+      statusMessage = 'Exception';
+    }
+     swal(
+  statusMessage,
+  data.status,
+  statusFlag
+)  
+     $("#uploadBtn").prop("disabled", false);
+      }
+  })
+});
+
+<!-- Upload File Ajax End-->
+</script>
+
+</html>
