@@ -7,7 +7,7 @@ import com.main.org.testng.constants.TestNG_Constants;
 
 @Controller
 public class HomeController {
-	@RequestMapping("/home*/**")
+	@RequestMapping("/")
 	public String home() {
 		return "Pages/final-index";
 	}
