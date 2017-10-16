@@ -16,8 +16,10 @@ public class TestNG_Constants {
 	public static String EXTENT_REPORT_CSS_FOLDER_NAME = "extentreports";
 	public static String EXTENT_REPORT_SCREENSHOT_FOLDER_NAME = "screenshots";
 	public static String BACKUP_REPORT_PATH = "C:/AutomationManagement/Resource/OldReports/";
-	public static String REPORT_FOLDER = "src/main/resources/templates/Report/";
-	public static String STATIC_FOLDER = "src/main/resources/static/";
+//	public static String REPORT_FOLDER = "src/main/resources/templates/Report/";
+	public static String REPORT_FOLDER = "C:/AutomationMgtapache-tomcat-8.5.6/webapps/sampleApiWork-0.0.1-SNAPSHOT/WEB-INF/classes/templates/Report/";
+//	public static String STATIC_FOLDER = "src/main/resources/static/";
+	public static String STATIC_FOLDER = "C:/AutomationMgtapache-tomcat-8.5.6/webapps/sampleApiWork-0.0.1-SNAPSHOT/WEB-INF/classes/static/";
 	public static String EXTENT_REPORT_CONFIG_FILE = "C:/AutomationManagement/Resource/ExtentReportConfig/extent-config.xml";
 	
 	public static String SCREEN_SHOT_PATH = "C:/AutomationManagement/Resource/Report/screenshots/";

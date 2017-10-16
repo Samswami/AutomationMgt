@@ -11,7 +11,7 @@ public class HomeController {
 	public String home() {
 		return "Pages/final-index";
 	}
-	@RequestMapping("/report")
+	@RequestMapping("/reports")
 	public String getReport(){
 		String reportName = TestNG_Constants.EXTENT_REPORT_NAME.replace(".html", "");
 //		System.out.println(reportName);

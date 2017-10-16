@@ -2,13 +2,15 @@ package com.main.org.testng.fileutil;
 
 import java.io.File;
 import java.io.IOException;
-
 import org.apache.commons.io.FileUtils;
-
+import org.apache.log4j.Logger;
 import com.main.org.testng.constants.TestNG_Constants;
 
 public class FileUtil {
 
+	public static Logger log = Logger.getLogger(FileUtil.class);
+	
+	
 	public boolean checkFileExists() {
 		File file = new File(TestNG_Constants.TEST_NG_HOMEDIRECTORY + TestNG_Constants.TEST_NG_FILENAME);
 		if (file.exists())
@@ -108,6 +110,7 @@ public class FileUtil {
 		}
 	public void deleteInnerFiles(String folderPath){
 		File innerFolderToDelete = new File(folderPath);
+		log.info("Path to delete file "+innerFolderToDelete.getAbsolutePath());
 		File[] listOfFiles = innerFolderToDelete.listFiles();
 		for (int i = 0; i < listOfFiles.length; i++) {
 			if(listOfFiles[i].exists()) listOfFiles[i].delete();

@@ -90,6 +90,7 @@ public class TestNG_Runner {
 	}
 
 	public void runTestNG(String path) {
+		log.info("Executing Scripts present in TestNg PAth = "+path);
 		TestNG testNG = new TestNG();
 		List<String> suiteFile = new ArrayList<String>();
 		suiteFile.add(path);
@@ -111,6 +112,7 @@ public class TestNG_Runner {
 			fileUtil.moveToDestinationFolder(TestNG_Constants.EXTENT_REPORT_PATH,
 					TestNG_Constants.BACKUP_REPORT_PATH + "Report-(" + System.currentTimeMillis() + ")");
 			log.info("moved to Old Report Folder");
+			log.info("Report path "+TestNG_Constants.REPORT_FOLDER);
 			fileUtil.deleteInnerFiles(TestNG_Constants.REPORT_FOLDER);
 			fileUtil.deleteDirectory(TestNG_Constants.STATIC_FOLDER + TestNG_Constants.EXTENT_REPORT_CSS_FOLDER_NAME);
 			log.info("cleaned up report in class path");
@@ -130,4 +132,5 @@ public class TestNG_Runner {
 			e.printStackTrace();
 		}
 	}
+	
 }

@@ -40,6 +40,9 @@ public class TestMethodService {
 		for (int i = 0; i < testMethodId.length; i++) {
 			if (checkTestMethodIdPresent(testMethodId[i]))
 				testMethodRepository.deleteById(testMethodId[i]);
+				/*testMethodRepository.delete(testMethodId[i]);*/
+				
+				
 		}
 	}
 
@@ -49,6 +52,9 @@ public class TestMethodService {
 			Optional<TestMethod> optionalTestMethod = testMethodRepository.findById(testMethodId[i]);
 			TestMethod testMethod = optionalTestMethod.get();
 			data.add(testMethod.getTestMethodName());
+			
+			/*TestMethod testMethod = testMethodRepository.findOne(testMethodId[i]);
+			data.add(testMethod.getTestMethodName());*/
 		}
 		return data;
 	}
